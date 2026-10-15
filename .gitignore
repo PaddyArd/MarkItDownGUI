@@ -1,0 +1,14 @@
+.venv/
+venv/
+__pycache__/
+*.pyc
+build/
+dist/
+*.spec
+*.log
+.pytest_cache/
+.idea/
+.vscode/
+
+# local test documents (third-party)
+*.pdf
