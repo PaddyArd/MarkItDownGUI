@@ -42,9 +42,11 @@ Python 3.14 was not the cause.
 ## Not done
 - Manual click-through of the GUI (exe and source): convert via the UI, preview tabs, Save, batch page.
 - Untested: Settings page, URL/YouTube input, Azure/OpenAI options.
-- GitHub repo not created. Suggested commands (in the project folder, after `gh auth login`):
-  `git init -b main && git add . && git commit -m "Initial commit" && gh repo create MarkItDownGUI --private --source . --push`
-- `.github/workflows/ci.yml` not written. Content: Windows runner, Python 3.12/3.13 matrix, `pip install -r requirements-dev.txt`, `fix_qt_runtime.bat`, `pytest -q`.
+
+## Done since
+- GitHub repo created: https://github.com/PaddyArd/MarkItDownGUI (branch `main`, signed commits).
+- CI added: `.github/workflows/ci.yml` runs on `windows-latest` with Python 3.13/3.14: `pip install -r requirements-dev.txt`, `fix_qt_runtime.bat`, `pytest -q`.
+- `fix_qt_runtime.bat` now finds PyQt5 through the active `python` instead of `%~dp0.venv`, so it works in CI and still works from `run.bat`/`build.bat` (they activate the venv first). It exits with an error if PyQt5 can't be imported.
 
 ## Things to watch
 - `fix_qt_runtime.bat` must re-run after any reinstall or upgrade of PyQt5. Dev machines need the VC++ 2015-2022 x64 redistributable.
@@ -55,5 +57,3 @@ Python 3.14 was not the cause.
 
 ## Suggested next steps
 1. Click through the GUI exe: single convert + preview + Save, batch, settings, URL/YouTube.
-2. Create the GitHub repo and CI workflow.
-3. Add a CHANGELOG entry for the runtime fix.
